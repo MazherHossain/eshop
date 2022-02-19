@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends User
+class Customer extends User
 {
     use HasFactory;
     protected $guarded =[];
