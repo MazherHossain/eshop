@@ -12,6 +12,10 @@ class AdminLoginController extends Controller
     public function showAdminLoginForm(){
         return view('admin.login');
     }
+    //Admin login redirect
+    public function AdminLoginRedirect(){
+        return redirect()->route('admin.login.form');
+    }
 /**
  * Admin Login
 */

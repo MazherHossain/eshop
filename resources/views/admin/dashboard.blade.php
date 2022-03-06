@@ -82,7 +82,7 @@
           </p>
         </div>
         <div class="d-flex align-items-center mt-3">
-          <img src="assets/images/avatars/avatar-1.png" width="45" height="45" class="rounded-circle" alt="" />
+          <img src="{{url('assets/images/avatars/avatar-1.png')}}" width="45" height="45" class="rounded-circle" alt="" />
           <div class="flex-grow-1 ms-3">
             <p class="mb-0"><span class="badge badge-pill bg-light-danger text-danger">4.9</span>
             </p>
@@ -92,7 +92,7 @@
         </div>
         <hr/>
         <div class="d-flex align-items-center">
-          <img src="assets/images/avatars/avatar-2.png" width="45" height="45" class="rounded-circle" alt="" />
+          <img src="{{url('assets/images/avatars/avatar-2.png')}}" width="45" height="45" class="rounded-circle" alt="" />
           <div class="flex-grow-1 ms-3">
             <p class="mb-0"><span class="badge badge-pill bg-light-danger text-danger">3.5</span>
             </p>
@@ -102,7 +102,7 @@
         </div>
         <hr/>
         <div class="d-flex align-items-center">
-          <img src="assets/images/avatars/avatar-3.png" width="45" height="45" class="rounded-circle" alt="" />
+          <img src="{{url('assets/images/avatars/avatar-3.png')}}" width="45" height="45" class="rounded-circle" alt="" />
           <div class="flex-grow-1 ms-3">
             <p class="mb-0"><span class="badge badge-pill bg-light-danger text-danger">5.2</span>
             </p>
@@ -112,7 +112,7 @@
         </div>
         <hr/>
         <div class="d-flex align-items-center">
-          <img src="assets/images/avatars/avatar-4.png" width="45" height="45" class="rounded-circle" alt="" />
+          <img src="{{url('assets/images/avatars/avatar-4.png')}}" width="45" height="45" class="rounded-circle" alt="" />
           <div class="flex-grow-1 ms-3">
             <p class="mb-0"><span class="badge badge-pill bg-light-danger text-danger">8.9</span>
             </p>
