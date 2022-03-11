@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name') -> unique();
             $table->string('slug') -> unique();
             $table->longText('permission');
-            $table->boolean('status');
-            $table->boolean('trash');
+            $table->boolean('status')->default(true);
+            $table->boolean('trash')->default(false);
             $table->timestamps();
         });
     }

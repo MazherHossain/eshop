@@ -524,6 +524,7 @@
 	<script src="{{asset('assets/js/index5.js')}}"></script>
 	<!--app JS-->
 	<script src="{{asset('assets/js/app.js')}}"></script>
+	<script src="{{asset('eshop/admin.js')}}"></script>
 </body>
 
 </html> 

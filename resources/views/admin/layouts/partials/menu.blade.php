@@ -62,9 +62,9 @@
         <div class="menu-title">Users</div>
       </a>
       <ul>
-        <li> <a href="{{route('role.index')}}"><i class="bx bx-right-arrow-alt"></i>All Users</a>
+        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Users</a>
         </li>
-        <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Role</a>
+        <li> <a href="{{route('role.index')}}"><i class="bx bx-right-arrow-alt"></i>Role</a>
         </li>
         <li> <a href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>Permission</a>
         </li>
