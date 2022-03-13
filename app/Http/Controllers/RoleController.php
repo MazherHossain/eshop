@@ -20,6 +20,35 @@ class RoleController extends Controller
         return view('admin.user.role.index');
     }
 
+    public function allRoles()
+    {
+        
+        $data=Role::all();
+        $list='';
+        $count=1;
+        foreach($data as $role){
+        $per_list ='<ul>';
+        foreach(json_decode($role -> permission) as $per){
+            $per_list .= '<li>'.$per.'</li>';
+        }
+        $per_list .='</ul>';
+        $list .= '<tr>';
+        $list .= '<td>'.$count;$count++.'</td>';
+        $list .= '<td>'.$role -> name.'</td>';
+        $list .= '<td>'.$role -> slug.'</td>';
+        $list .= '<td>'.$per_list.'</td>';
+        $list .= '<td><label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+    </label></td>';
+        $list .= '<td><a class="btn btn-warning edit-btn" edit_id="'.$role->id.'" data-bs-toggle="modal" href="#role_edit_modal">Edit</a>
+        <a class="btn btn-danger delete-btn" delete_id="'.$role->id.'" href="#">Delete</a></td>';
+        $list .= '</tr>';
+        }
+        return $list;
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,9 +80,25 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show($id)
     {
-        //
+        $data=Role::find($id);
+
+        $permission=['Dashboard','Post','Product','Orders','Users','Settings','Slider'];
+        $per_list='<ul>';
+        foreach($permission as $per){
+            $checked='';
+            if(in_array($per,json_decode($data->permission))){
+                $checked='checked';
+            }
+            $per_list .= '<li><input name="permission[]" '.$checked.' type="checkbox" value="'.$per.'" id="'.$per.'"><label for="'.$per.'">'.$per.'</label></li>';
+        }
+        $per_list .='</ul>';
+        return [
+            'name'      => $data->name,
+            'id'        => $data->id,
+            'permission'=> $per_list,
+        ];
     }
 
     /**
@@ -74,9 +119,13 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        //
+        $edit_data=Role::find($id);
+        $edit_data -> name= $request->name;
+        $edit_data -> slug= Str::slug($request->name);
+        $edit_data -> permission= json_encode($request->permission);
+        $edit_data -> update();
     }
 
     /**
@@ -88,5 +137,10 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         //
+    }
+    /*Delete Role**/
+    public function delRole($id){
+        $delete_data = Role::find($id);
+        $delete_data->delete();
     }
 }

@@ -20,3 +20,5 @@ Route::get ('admin/logout', [AdminLoginController::class, 'AdminLogout']) ->name
 
 //Admin role crud
 Route::resource('role', RoleController::class);
+Route::get('all-roles', [RoleController::class,'allRoles']);
+Route::get('del-role/{id}', [RoleController::class,'delRole']);

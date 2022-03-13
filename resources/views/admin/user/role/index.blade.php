@@ -85,7 +85,7 @@
 								<table class="table mb-0 table-striped">
 									<thead>
 										<tr>
-											<th scope="col">#</th>
+											<th scope="col">Serial</th>
 											<th scope="col">Role Name</th>
 											<th scope="col">Slug</th>
                       <th scope="col">Permission</th>
@@ -93,21 +93,8 @@
                       <th scope="col">Action</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-                      <td><label class="switch">
-												<input type="checkbox" checked>
-												<span class="slider round"></span>
-											</label></td>
-                      <td>
-                        <a class="btn btn-warning" href="#">Edit</a>
-                        <a class="btn btn-danger" href="#">Delete</a>
-                      </td>
-										</tr>
+									<tbody id="role_list">
+									
 										
 									</tbody>
 								</table>
@@ -161,5 +148,43 @@
   </div>
 </div>
 
+
+{{--Modal for edit--}}
+<div class="col">
+  <!-- Modal -->
+  <div class="modal fade" id="role_edit_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+				<form id="role_edit_form" method="POST">
+					@csrf
+					@method('PUT')
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Role Data</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+					<div class="msg"></div>
+					<div class="form-group">
+						<label for="">Role Name</label>
+						<input name="name" type="text" class="form-control">
+						<input name="edit_id" type="hidden" class="form-control">
+					</div>
+					<div class="form-group">
+						<hr>
+						<label for="">Permissions</label>
+						<hr>
+						<div id="per_list_edit">
+
+						</div>
+					</div>
+					<div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+			</form>
+      </div>
+    </div>
+  </div>
+</div>
 
 @endsection
