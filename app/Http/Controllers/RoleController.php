@@ -27,6 +27,7 @@ class RoleController extends Controller
         $list='';
         $count=1;
         foreach($data as $role){
+            $status = $role -> status ? 'checked' : '';
         $per_list ='<ul>';
         foreach(json_decode($role -> permission) as $per){
             $per_list .= '<li>'.$per.'</li>';
@@ -38,7 +39,7 @@ class RoleController extends Controller
         $list .= '<td>'.$role -> slug.'</td>';
         $list .= '<td>'.$per_list.'</td>';
         $list .= '<td><label class="switch">
-        <input type="checkbox" checked>
+        <input id="role_status" value="'.$role->id.'" type="checkbox" '.$status.'>
         <span class="slider round"></span>
     </label></td>';
         $list .= '<td><a class="btn btn-warning edit-btn" edit_id="'.$role->id.'" data-bs-toggle="modal" href="#role_edit_modal">Edit</a>
@@ -142,5 +143,16 @@ class RoleController extends Controller
     public function delRole($id){
         $delete_data = Role::find($id);
         $delete_data->delete();
+    }
+    /*Status update*/
+    public function statusUpdate($id){
+        $status_data=Role::find($id);
+        if($status_data -> status){
+            $status_data -> status= false;
+        }
+        else{
+            $status_data -> status=true;
+        }
+        $status_data -> update();
     }
 }

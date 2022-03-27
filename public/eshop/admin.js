@@ -98,5 +98,17 @@
     });
    });
 
+   /*Status update*/
+   $(document).on('change','#role_status',function(){
+    
+    $.ajax({
+      url:'status-update/'+ this.value,
+      success:function(data){
+        swal('Status update succesful!');
+      }
+    });
+
+   });
+
   });
 })(jQuery)

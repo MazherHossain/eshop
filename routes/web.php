@@ -22,3 +22,4 @@ Route::get ('admin/logout', [AdminLoginController::class, 'AdminLogout']) ->name
 Route::resource('role', RoleController::class);
 Route::get('all-roles', [RoleController::class,'allRoles']);
 Route::get('del-role/{id}', [RoleController::class,'delRole']);
+Route::get('status-update/{id}', [RoleController::class,'statusUpdate']);
