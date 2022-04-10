@@ -77,7 +77,7 @@
   
 						<h6 class="mb-0 text-uppercase">All Permissions</h6>
 						<hr/>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#role_add_modal">Add New Role</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#permission_add_modal">Add New Permission</button>
             <br>
             <br>
 						<div class="card">
@@ -86,15 +86,12 @@
 									<thead>
 										<tr>
 											<th scope="col">Serial</th>
-											<th scope="col">Role Name</th>
+											<th scope="col">Permission Name</th>
 											<th scope="col">Slug</th>
-                      <th scope="col">Permission</th>
-											<th scope="col">Status</th>
                       <th scope="col">Action</th>
 										</tr>
 									</thead>
-									<tbody id="role_list">
-									
+									<tbody id="permission_list">
 										
 									</tbody>
 								</table>
@@ -109,74 +106,23 @@
 {{--Modal for new role--}}
 <div class="col">
   <!-- Modal -->
-  <div class="modal fade" id="role_add_modal" tabindex="-1" aria-hidden="true">
+  <div class="modal fade" id="permission_add_modal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-				<form id="role_add_form" method="POST">
+				<form id="permission_add_form" method="POST">
 					@csrf
         <div class="modal-header">
-          <h5 class="modal-title">Add New Role</h5>
+          <h5 class="modal-title">Add New Permission</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          
 					<div class="msg"></div>
 					<div class="form-group">
-						<label for="">Role Name</label>
+						<label for="">Permission Name</label>
 						<input name="name" type="text" class="form-control">
 					</div>
-					<div class="form-group">
-						<hr>
-						<label for="">Permissions</label>
-						<hr>
-						<ul>
-							<li><input name="permission[]" type="checkbox" value="Dashboard" id="Dashboard"><label for="Dashboard">Dashboard</label></li>
-							<li><input name="permission[]" type="checkbox" value="Post" id="Post"><label for="Post">Post</label></li>
-							<li><input name="permission[]" type="checkbox" value="Product" id="Product"><label for="Product">Product</label></li>
-							<li><input name="permission[]" type="checkbox" value="Orders" id="Orders"><label for="Orders">Orders</label></li>
-							<li><input name="permission[]" type="checkbox" value="Users" id="Users"><label for="Users">Users</label></li>
-							<li><input name="permission[]" type="checkbox" value="Settings" id="Settings"><label for="Settings">Settings</label></li>
-							<li><input name="permission[]" type="checkbox" value="Slider" id="Slider"><label for="Slider">Slider</label></li>
-						</ul>
-					</div>
-					<div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-			</form>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-{{--Modal for edit--}}
-<div class="col">
-  <!-- Modal -->
-  <div class="modal fade" id="role_edit_modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-				<form id="role_edit_form" method="POST">
-					@csrf
-					@method('PUT')
-        <div class="modal-header">
-          <h5 class="modal-title">Edit Role Data</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-					<div class="msg"></div>
-					<div class="form-group">
-						<label for="">Role Name</label>
-						<input name="name" type="text" class="form-control">
-						<input name="edit_id" type="hidden" class="form-control">
-					</div>
-					<div class="form-group">
-						<hr>
-						<label for="">Permissions</label>
-						<hr>
-						<div id="per_list_edit">
-
-						</div>
-					</div>
+					
 					<div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Save changes</button>

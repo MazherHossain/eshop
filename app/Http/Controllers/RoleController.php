@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 
+use App\Models\Permission;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,10 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('admin.user.role.index');
+        $data=Permission::all();
+        return view('admin.user.role.index', [
+            'all_permission'=> $data,
+        ]);
     }
 
     public function allRoles()
@@ -85,7 +89,11 @@ class RoleController extends Controller
     {
         $data=Role::find($id);
 
-        $permission=['Dashboard','Post','Product','Orders','Users','Settings','Slider'];
+        $all_permission=Permission:: all();
+        $permission=[];
+        foreach($all_permission as $permission_item){
+            array_push($permission,$permission_item-> name);
+        }
         $per_list='<ul>';
         foreach($permission as $per){
             $checked='';

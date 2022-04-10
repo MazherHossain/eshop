@@ -30,7 +30,8 @@
           processData: false,
           success: function(data){
             getAllRoles();
-            $('##role_add_form')[0].reset();
+            $('#role_add_form')[0].reset();
+            $('#role_add_modal').modal('hide');
           }
         });
       }
@@ -93,6 +94,7 @@
           success: function(data){
             //console.log(data);
             getAllRoles();
+            $('#role_edit_modal').modal('hide');
             
           }
     });
@@ -104,11 +106,52 @@
     $.ajax({
       url:'status-update/'+ this.value,
       success:function(data){
-        swal('Status update succesful!');
+        swal('Status update successful!');
       }
     });
 
    });
+
+   /*Permission script*/
+   $(document).on('submit','#permission_add_form',function(e){
+    e.preventDefault();
+    let name= $('#permission_add_form input[name="name"]').val();
+    if( name==''){
+      $('.msg').html(setAlert('All fields are required!'));
+    }
+    else{
+      $.ajax({
+        url:'permission',
+        method: "POST",
+        data: new FormData(this),
+        contentType: false,
+        processData: false,
+        success: function(data){
+          if(data){
+          swal(`${name} Permission Added`);
+          $('#permission_add_form')[0].reset();
+          $('#permission_add_modal').modal('hide');
+          getAllPermission();
+          }
+          else{
+            swal(`${name} already exists!`);
+          }
+          
+        }
+      });
+    }
+   });
+
+   /*Get All Permission*/
+   getAllPermission();
+   function getAllPermission(){
+     $.ajax({
+       url:'all-permissions',
+       success:function(data){
+        $('#permission_list').html(data);
+       }
+     });
+   }
 
   });
 })(jQuery)

@@ -129,13 +129,9 @@
 						<label for="">Permissions</label>
 						<hr>
 						<ul>
-							<li><input name="permission[]" type="checkbox" value="Dashboard" id="Dashboard"><label for="Dashboard">Dashboard</label></li>
-							<li><input name="permission[]" type="checkbox" value="Post" id="Post"><label for="Post">Post</label></li>
-							<li><input name="permission[]" type="checkbox" value="Product" id="Product"><label for="Product">Product</label></li>
-							<li><input name="permission[]" type="checkbox" value="Orders" id="Orders"><label for="Orders">Orders</label></li>
-							<li><input name="permission[]" type="checkbox" value="Users" id="Users"><label for="Users">Users</label></li>
-							<li><input name="permission[]" type="checkbox" value="Settings" id="Settings"><label for="Settings">Settings</label></li>
-							<li><input name="permission[]" type="checkbox" value="Slider" id="Slider"><label for="Slider">Slider</label></li>
+							@foreach($all_permission as $per)
+							<li><input name="permission[]" type="checkbox" value="{{$per -> name}}" id="{{$per-> name}}"><label for="{{$per -> name}}">{{$per-> name}}</label></li>
+							@endforeach
 						</ul>
 					</div>
 					<div class="modal-footer">
