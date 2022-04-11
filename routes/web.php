@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -28,3 +29,6 @@ Route::get('status-update/{id}', [RoleController::class,'statusUpdate']);
 //Permission crud
 Route::resource('permission', PermissionController::class);
 Route::get('all-permissions', [PermissionController::class, 'getAllPermission']);
+
+//Admin's Crud
+Route::resource ('admin/users', AdminController:: class);
