@@ -100,4 +100,27 @@ class AdminController extends Controller
     {
         //
     }
+
+    /*get all user data*/
+    public function getUsers(){
+        $users=Admin:: latest()-> get();
+        $data="";
+        $i=1;
+        foreach($users as $user){
+            $photo = $user -> photo ?? 'avatar.webp';
+            $photo_path = url('eshop/img/'.$photo);
+            $data .="<tr>";
+            $data .="<td>{$i}</td>";
+            $data .="<td>{$user->name}</td>";
+            $data .="<td>{$user->username}</td>";
+            $data .="<td><img style='width:70px; height: 70px;' src=\"{$photo_path}\"></td>";
+            $data .="<td>{$user->photo}</td>";
+            $data .="<td>{$user->status}</td>";
+            $data .= '<td><a class="btn btn-warning edit-btn" edit_id="'.$user->id.'" data-bs-toggle="modal" href="#role_edit_modal">Edit</a>
+        <a class="btn btn-danger delete-btn" delete_id="'.$user->id.'" href="#">Delete</a></td>';
+            $data .="</tr>";
+            $i++;
+        }
+        return $data;
+    }
 }

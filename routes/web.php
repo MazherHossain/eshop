@@ -33,3 +33,4 @@ Route::get('all-permissions', [PermissionController::class, 'getAllPermission'])
 //Admin's Crud
 Route::resource ('admin-user', AdminController:: class);
 Route::post ('user-create', [AdminController:: class, 'store']);
+Route::get ('get-admin-users', [AdminController:: class, 'getUsers']);

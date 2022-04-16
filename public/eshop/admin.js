@@ -163,10 +163,24 @@
       contentType: false,
       processData: false,
       success: function(data){
-        console.log(data);
+        //console.log(data);
+        $('#user_add_form')[0].reset();
+        $('#user_add_modal').modal('hide');
       }
     });
    });
+
+   /*Get All Users*/
+   getUsers();
+   function getUsers(){
+     $.ajax({
+       url:'get-admin-users',
+       success:function(data){
+         
+        $('#user_list').html(data);
+       }
+     });
+   }
 
   });
 })(jQuery)

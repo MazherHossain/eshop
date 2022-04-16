@@ -11,4 +11,8 @@ class Admin extends User
 {
     use HasFactory, Notifiable;
     protected $guarded =[];
+
+    public function role(){
+        return $this -> belongsTo(Role::class);
+    }
 }

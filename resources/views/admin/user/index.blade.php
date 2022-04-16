@@ -158,44 +158,4 @@
     </div>
   </div>
 </div>
-
-
-{{--Modal for edit--}}
-<div class="col">
-  <!-- Modal -->
-  <div class="modal fade" id="role_edit_modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-				<form id="role_edit_form" method="POST">
-					@csrf
-					@method('PUT')
-        <div class="modal-header">
-          <h5 class="modal-title">Edit Role Data</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-					<div class="msg"></div>
-					<div class="form-group">
-						<label for="">Role Name</label>
-						<input name="name" type="text" class="form-control">
-						<input name="edit_id" type="hidden" class="form-control">
-					</div>
-					<div class="form-group">
-						<hr>
-						<label for="">Permissions</label>
-						<hr>
-						<div id="per_list_edit">
-
-						</div>
-					</div>
-					<div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-			</form>
-      </div>
-    </div>
-  </div>
-</div>
-
 @endsection
