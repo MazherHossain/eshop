@@ -62,7 +62,7 @@
         <div class="menu-title">Users</div>
       </a>
       <ul>
-        <li> <a href="{{url('admin/users')}}"><i class="bx bx-right-arrow-alt"></i>All Users</a>
+        <li> <a href="{{url('admin-user')}}"><i class="bx bx-right-arrow-alt"></i>All Users</a>
         </li>
         <li> <a href="{{route('role.index')}}"><i class="bx bx-right-arrow-alt"></i>Role</a>
         </li>

@@ -94,7 +94,7 @@
                       <th scope="col">Action</th>
 										</tr>
 									</thead>
-									<tbody id="role_list">
+									<tbody id="user_list">
 									
 										
 									</tbody>
@@ -113,7 +113,7 @@
   <div class="modal fade" id="user_add_modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-				<form id="role_add_form" method="POST">
+				<form id="user_add_form" method="POST">
 					@csrf
         <div class="modal-header">
           <h5 class="modal-title">Add New User</h5>
@@ -127,20 +127,20 @@
 					</div>
 					<div class="form-group">
 						<label for="">User Name</label>
-						<input name="name" type="text" class="form-control">
+						<input name="username" type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="">Email</label>
-						<input name="name" type="text" class="form-control">
+						<input name="email" type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="">Password</label>
-						<input name="name" type="text" class="form-control">
+						<input name="password" value="{{$tmp_pass}}" type="text" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="">Role</label>
 
-						<select class="form-control" name="" id="">
+						<select class="form-control" name="role" id="">
 							<option value="">-Select-</option>
 							@foreach ($all_roles as $item)
 							<option value="{{$item-> id}}">{{$item-> name}}</option>

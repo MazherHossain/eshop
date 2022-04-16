@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Notifications\AdminUserLoginNotification;
 
 class AdminController extends Controller
 {
@@ -15,9 +17,12 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $rand_pass= str_shuffle('123456789qwertyuioasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*()_+}{|:L<>?');
+        $user_tmp_pass= substr($rand_pass,5,8);
         $roles=Role::all();
         return view('admin.user.index',[
             'all_roles'=>$roles,
+            'tmp_pass' =>$user_tmp_pass,
         ]);
     }
 
@@ -39,7 +44,16 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pass= $request-> password;
+        $user = Admin:: create([
+            'name'    => $request-> name,
+            'username'=> $request->username,
+            'email'   => $request->email,
+            'password'=> Hash::make($request->password),
+            'role_id' => $request->role,
+        ]);
+
+        $user -> notify(new AdminUserLoginNotification($user,$pass));
     }
 
     /**

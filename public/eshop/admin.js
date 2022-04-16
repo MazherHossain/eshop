@@ -153,5 +153,20 @@
      });
    }
 
+   /*Add New Admin User*/
+   $(document).on('submit','#user_add_form',function(e){
+    e.preventDefault();
+    $.ajax({
+      url   :'user-create',
+      method: "POST",
+      data  : new FormData(this),
+      contentType: false,
+      processData: false,
+      success: function(data){
+        console.log(data);
+      }
+    });
+   });
+
   });
 })(jQuery)
