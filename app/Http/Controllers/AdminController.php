@@ -113,14 +113,37 @@ class AdminController extends Controller
             $data .="<td>{$i}</td>";
             $data .="<td>{$user->name}</td>";
             $data .="<td>{$user->username}</td>";
+            $data .="<td>{$user->role->name}</td>";
             $data .="<td><img style='width:70px; height: 70px;' src=\"{$photo_path}\"></td>";
-            $data .="<td>{$user->photo}</td>";
+            
             $data .="<td>{$user->status}</td>";
-            $data .= '<td><a class="btn btn-warning edit-btn" edit_id="'.$user->id.'" data-bs-toggle="modal" href="#role_edit_modal">Edit</a>
-        <a class="btn btn-danger delete-btn" delete_id="'.$user->id.'" href="#">Delete</a></td>';
+            $data .= '<td><a  class="btn btn-warning edit-btn" edit_id="'.$user->id.'" data-bs-toggle="modal" href="">Edit</a>
+            <a class="btn btn-danger delete-btn" delete_id="'.$user->id.'" href="#">Delete</a></td>';
             $data .="</tr>";
             $i++;
         }
         return $data;
+    }
+    /**get single admin*/
+    public function getAdmin($id){
+        $data = Admin::find($id);
+        return [
+            'id' => $data -> id,
+            'name' => $data -> name,
+            'username'=> $data -> username,
+            'email' => $data -> email,
+            'photo' => $data -> photo,
+            'photo_path' => url('eshop/img/'),
+        ];
+        
+    }
+    //**update admin */
+    public function updateAdmin(Request $request){
+        $admin_data = Admin::find($request -> edit_id);
+        $admin_data -> name = $request -> name;
+        $admin_data -> email = $request -> email;
+        $admin_data -> username = $request -> username;
+        $admin_data -> role_id = $request -> role;
+        $admin_data -> update();
     }
 }

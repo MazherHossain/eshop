@@ -107,7 +107,7 @@
 				<!--end row-->
 
 
-{{--Modal for new role--}}
+{{--Modal for new user--}}
 <div class="col">
   <!-- Modal -->
   <div class="modal fade" id="user_add_modal" tabindex="-1" aria-hidden="true">
@@ -136,6 +136,59 @@
 					<div class="form-group">
 						<label for="">Password</label>
 						<input name="password" value="{{$tmp_pass}}" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="">Role</label>
+
+						<select class="form-control" name="role" id="">
+							<option value="">-Select-</option>
+							@foreach ($all_roles as $item)
+							<option value="{{$item-> id}}">{{$item-> name}}</option>
+							@endforeach
+						</select>
+						
+					</div>
+					
+					<div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+			</form>
+      </div>
+    </div>
+  </div>
+</div>
+{{--Modal for edit--}}
+<div class="col">
+  <!-- Modal -->
+  <div class="modal fade" id="user_edit_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+				<form id="user_edit_form" method="POST">
+					@csrf
+        <div class="modal-header">
+          <h5 class="modal-title">Edit User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+					<div class="msg"></div>
+					<div class="form-group">
+						<label for="">Name</label>
+						<input name="name" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="">User Name</label>
+						<input name="username" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="">Email</label>
+						<input name="email" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<img style="width:100%;" id="admin_user_preview" src="" alt="">
+						<input name="old_photo" type="hidden" class="form-control">
+						<input name="edit_id" type="hidden" class="form-control">
+						<input name="new_photo" type="file" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="">Role</label>

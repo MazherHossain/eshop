@@ -34,3 +34,5 @@ Route::get('all-permissions', [PermissionController::class, 'getAllPermission'])
 Route::resource ('admin-user', AdminController:: class);
 Route::post ('user-create', [AdminController:: class, 'store']);
 Route::get ('get-admin-users', [AdminController:: class, 'getUsers']);
+Route::get ('get-admin/{id}', [AdminController:: class, 'getAdmin']);
+Route::post ('update-admin', [AdminController:: class, 'updateAdmin']);

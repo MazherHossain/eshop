@@ -182,5 +182,42 @@
      });
    }
 
+   /*User Edit*/
+   $(document).on('click','.edit-btn',function(){
+    let id= $(this).attr('edit_id');
+    $.ajax({
+      url:'get-admin/'+id,
+      success:function(data){
+        $('#user_edit_form [name="edit_id"]').val(data.id);
+        $('#user_edit_form [name="name"]').val(data.name);
+        $('#user_edit_form [name="username"]').val(data.username);
+        $('#user_edit_form [name="email"]').val(data.email);
+        $('#user_edit_form [name="old_photo"]').val(data.photo);
+        $('#user_edit_form #admin_user_preview').attr('src',data.photo_path +'/'+data.photo);
+        $('#user_edit_modal').modal('show');   
+          
+      }
+    });
+   });
+
+   
+   /*edit New Admin User*/
+   $(document).on('submit','#user_edit_form',function(e){
+    e.preventDefault();
+    $.ajax({
+      url   :'update-admin',
+      method: "POST",
+      data  : new FormData(this),
+      contentType: false,
+      processData: false,
+      success: function(data){
+        //console.log(data);
+        $('#user_edit_form')[0].reset();
+        $('#user_edit_modal').modal('hide');
+        getUsers();
+      }
+    });
+   });
+
   });
 })(jQuery)
